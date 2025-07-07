@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: spring-ai-simple-chat
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      init:
+        chat:
+          include: true
+          options:
+            format: json
