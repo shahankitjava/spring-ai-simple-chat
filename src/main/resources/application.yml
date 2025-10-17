@@ -3,9 +3,17 @@ spring:
     name: spring-ai-simple-chat
   ai:
     ollama:
-      base-url: http://localhost:11434
+      base-url: http://host.docker.internal:11434
       init:
         chat:
           include: true
           options:
             format: json
+
+springdoc:
+  swagger-ui:
+    enabled: true
+  api-docs:
+    enabled: true
+server:
+  port: 8080

@@ -1,6 +1,5 @@
 package org.ankit.demo.simplechat.chatmodel;
 
-import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.model.ChatResponse;
@@ -8,14 +7,22 @@ import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaModel;
 import org.springframework.ai.ollama.api.OllamaOptions;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequiredArgsConstructor
 public class ChatController {
 
     private final OllamaChatModel ollamaChatModel;
-    private Logger logger = LoggerFactory.getLogger(ChatController.class);
+
+    @Autowired
+    public ChatController(OllamaChatModel ollamaChatModel) {
+        this.ollamaChatModel = ollamaChatModel;
+    }
+
+    private final Logger logger = LoggerFactory.getLogger(ChatController.class);
 
     @GetMapping("/chat/{prompt}")
     public String chat(@PathVariable("prompt") String prompt) {
@@ -26,7 +33,7 @@ public class ChatController {
                 new Prompt(
                         prompt,
                         OllamaOptions.builder()
-                                .model(OllamaModel.LLAMA3_2)
+                                .model(OllamaModel.LLAMA3)
                                 .temperature(0.4)
                                 .build()
                 ));

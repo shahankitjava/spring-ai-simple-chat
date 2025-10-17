@@ -1,18 +1,20 @@
 package org.ankit.demo.simplechat.chatmodel;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.mockito.ArgumentMatchers.any;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaOptions;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
 
 class ChatControllerTest {
 
@@ -66,7 +68,7 @@ class ChatControllerTest {
             // Verify options
             OllamaOptions options = (OllamaOptions) prompt.getOptions();
             // The actual model name at runtime is "llama3.2" even though we use OllamaModel.LLAMA3_2
-            assertEquals("llama3.2", options.getModel());
+            assertEquals("llama3", options.getModel());
             assertEquals(0.4, options.getTemperature());
 
             return mockResponse;
