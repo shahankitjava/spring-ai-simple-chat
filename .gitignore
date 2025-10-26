@@ -27,4 +27,9 @@ replay_pid*
 .idea
 target
 .DS_Store
+.vscode.classpath
+.factorypath
+.project
+.settings
+.classpath
 .vscode

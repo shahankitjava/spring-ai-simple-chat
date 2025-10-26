@@ -7,7 +7,6 @@ import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.ollama.api.OllamaModel;
 import org.springframework.ai.ollama.api.OllamaOptions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +16,6 @@ public class ChatController {
 
     private final OllamaChatModel ollamaChatModel;
 
-    @Autowired
     public ChatController(OllamaChatModel ollamaChatModel) {
         this.ollamaChatModel = ollamaChatModel;
     }
